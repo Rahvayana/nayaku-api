@@ -57,6 +57,17 @@ class ApiController extends Controller
        }
     }
 
+    public function home(Request $request)
+    {
+        $id=$request->id;
+        $user=User::find($id);
+        return response()->json([
+            'data'=>substr($user->name,0,2),
+            'status'=>200,
+            'message'=>'Sukses'
+        ]);
+    }
+
     public function tentang()
     {
         $data=Contact::all();    
