@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Product;
 use App\Models\Tip;
 use App\Models\User;
 use Exception;
@@ -84,6 +85,11 @@ class ApiController extends Controller
     public function tips()
     {
         $data=Tip::all();    
+        return response($data);
+    }
+    public function produk()
+    {
+        $data=Product::all();    
         return response($data);
     }
 }

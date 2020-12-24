@@ -23,5 +23,6 @@ $router->group(['prefix'=>'apps'],function() use ($router){
     $router->post('/login',[ApiController::class, 'login']);
     $router->post('/home',[ApiController::class, 'home']);
     $router->get('/tips',[ApiController::class, 'tips']);
+    $router->get('/produk',[ApiController::class, 'produk']);
     $router->get('/tentang',[ApiController::class, 'tentang']);
 });
