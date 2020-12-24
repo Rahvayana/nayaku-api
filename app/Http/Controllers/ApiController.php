@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Tip;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -73,6 +74,16 @@ class ApiController extends Controller
     public function tentang()
     {
         $data=Contact::all();    
+        return response()->json([
+            'data'=>$data,
+            'status'=>200,
+            'message'=>'Sukses'
+        ]);
+    }
+
+    public function tips()
+    {
+        $data=Tip::all();    
         return response()->json([
             'data'=>$data,
             'status'=>200,
