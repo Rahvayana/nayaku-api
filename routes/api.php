@@ -19,5 +19,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 $router->group(['prefix'=>'apps'],function() use ($router){
+    $router->post('/register',[ApiController::class, 'register']);
+    $router->post('/login',[ApiController::class, 'login']);
     $router->get('/tentang',[ApiController::class, 'tentang']);
 });
