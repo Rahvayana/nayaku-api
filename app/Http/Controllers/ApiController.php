@@ -16,7 +16,7 @@ class ApiController extends Controller
     public function login(Request $request)
     {
         $user=User::where('email',$request->email)->first();
-        if ($user && Hash::check($request->password, $user->password)) {
+        if ($user && Hash::check($request->password, $user->password)&&$user->is_user==1) {
             return response()->json([
                 'data'=>$user->id,
                 'status'=>200,
