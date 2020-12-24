@@ -84,10 +84,6 @@ class ApiController extends Controller
     public function tips()
     {
         $data=Tip::all();    
-        return response()->json([
-            'data'=>$data,
-            'status'=>200,
-            'message'=>'Sukses'
-        ]);
+        return response($data);
     }
 }
