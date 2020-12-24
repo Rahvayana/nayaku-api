@@ -61,8 +61,10 @@ class ApiController extends Controller
     {
         $id=$request->id;
         $user=User::find($id);
+        $data['icon']=substr($user->name,0,2);
+        $data['name']=$user->name;
         return response()->json([
-            'data'=>substr($user->name,0,2),
+            'data'=>$data,
             'status'=>200,
             'message'=>'Sukses'
         ]);
