@@ -25,4 +25,5 @@ $router->group(['prefix'=>'apps'],function() use ($router){
     $router->get('/tips',[ApiController::class, 'tips']);
     $router->get('/produk',[ApiController::class, 'produk']);
     $router->get('/tentang',[ApiController::class, 'tentang']);
+    $router->post('/konsultasi',[ApiController::class, 'konsultasi']);
 });

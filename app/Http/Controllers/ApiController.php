@@ -8,6 +8,7 @@ use App\Models\Tip;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -90,6 +91,20 @@ class ApiController extends Controller
     public function produk()
     {
         $data=Product::all();    
+        return response($data);
+    }
+
+    public function konsultasi(Request $request)
+    {
+        $data=DB::table('rules')->select('hasil')->where('rule1',$request->keluhan)->get();
+        // dd($data);
+        DB::table('histories')->insert([
+            'user_id' => $request->id_user,
+            'treatment' => $data[0]->hasil,
+            'complaint' => $request->keluhan,
+            'type' => 1,
+            'hasil' => 1,
+        ]);
         return response($data);
     }
 }
