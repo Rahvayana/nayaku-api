@@ -107,4 +107,10 @@ class ApiController extends Controller
         ]);
         return response($data);
     }
+
+    public function allcomplaint(Request $request)
+    {
+        $data=DB::table('complaints')->where('kulit',$request->kulit)->get();
+        return response($data);
+    }
 }
