@@ -102,13 +102,13 @@ class ApiController extends Controller
             // return response((($request->keluhan)));
             // dd(DB::getQueryLog());
             // dd($data);
-            // DB::table('histories')->insert([
-            //     'user_id' => $request->id_user,
-            //     'treatment' => $data->hasil,
-            //     'complaint' => $request->keluhan,
-            //     'type' => 1,
-            //     'hasil' => 1,
-            // ]);
+            DB::table('histories')->insert([
+                'user_id' => $request->id_user,
+                'treatment' => $data->hasil,
+                'complaint' => json_encode($request->keluhan),
+                'type' => 1,
+                'hasil' => 1,
+            ]);
             return response()->json([
                 'data'=>$data,
                 'keluhan'=>$request->keluhan,
