@@ -96,21 +96,10 @@ class ApiController extends Controller
 
     public function konsultasi(Request $request)
     {
-        // return response(json_encode($request->keluhan));
-        $data=explode(",", substr(json_encode($request->keluhan),1,strlen(json_encode($request->keluhan))-2));
-        $i=0;
-        foreach($data as $n){
-            if($i>0){
-                $keluhan[]=substr($n,1);
-            }else{
-                $keluhan[]=$n;
-            }
-            $i++;
-        }
-        // dd(json_encode($keluhan));
+        // return response(($request->keluhan));
         
         try{
-            $data=DB::table('rules')->select('hasil')->where('rule1',json_encode($keluhan))->get();
+            $data=DB::table('rules')->select('hasil')->where('rule1',$request->keluhan)->get();
             // dd(DB::getQueryLog());
             // dd($data);
             DB::table('histories')->insert([
