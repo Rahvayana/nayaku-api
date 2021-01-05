@@ -122,7 +122,7 @@ class ApiController extends Controller
                 'user_id' => $request->id_user,
                 'treatment' => $request->perawatan,
                 'complaint' => 1,
-                'type' => 1,
+                'type' => $request->kulit,
                 'hasil' => $request->produk,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
