@@ -108,6 +108,7 @@ class ApiController extends Controller
                 'complaint' => json_encode($request->keluhan),
                 'type' => 1,
                 'hasil' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
             ]);
             return response()->json([
                 'data'=>$data,
