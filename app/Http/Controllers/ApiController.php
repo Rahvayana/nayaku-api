@@ -96,16 +96,33 @@ class ApiController extends Controller
 
     public function konsultasi(Request $request)
     {
-        $data=DB::table('rules')->select('hasil')->where('rule1',$request->keluhan)->get();
-        // dd($data);
-        DB::table('histories')->insert([
-            'user_id' => $request->id_user,
-            'treatment' => $data[0]->hasil,
-            'complaint' => $request->keluhan,
-            'type' => 1,
-            'hasil' => 1,
-        ]);
-        return response($data);
+        $data=explode(",", substr($request->keluhan,1,strlen($request->keluhan)-2));
+        $i=0;
+        foreach($data as $n){
+            if($i>0){
+                $keluhan[]=substr($n,1);
+            }else{
+                $keluhan[]=$n;
+            }
+            $i++;
+        }
+        // dd(json_encode($keluhan));
+        
+        try{
+            $data=DB::table('rules')->select('hasil')->where('rule1',json_encode($keluhan))->get();
+            // dd(DB::getQueryLog());
+            // dd($data);
+            DB::table('histories')->insert([
+                'user_id' => $request->id_user,
+                'treatment' => $data[0]->hasil,
+                'complaint' => $request->keluhan,
+                'type' => 1,
+                'hasil' => 1,
+            ]);
+            return response($data);
+        }catch(Exception $e){
+            return response($e);
+        }
     }
 
     public function allcomplaint(Request $request)
