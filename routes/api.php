@@ -28,4 +28,5 @@ $router->group(['prefix'=>'apps'],function() use ($router){
     $router->post('/konsultasi',[ApiController::class, 'konsultasi']);
     $router->post('/complaint',[ApiController::class, 'allcomplaint']);
     $router->post('/addhistory',[ApiController::class, 'addhistory']);
+    $router->post('/history',[ApiController::class, 'history']);
 });

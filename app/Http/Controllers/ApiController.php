@@ -132,4 +132,10 @@ class ApiController extends Controller
                 'message'=>'Sukses'
             ]);
     }
+
+    public function history(Request $request)
+    {
+        $data=DB::table('histories')->where('user_id',$request->id_user)->get();
+        return response($data);
+    }
 }
