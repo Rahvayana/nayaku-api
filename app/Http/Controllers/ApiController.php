@@ -112,7 +112,7 @@ class ApiController extends Controller
         try{
             $data=DB::table('rules')->select('hasil')->where('rule1',json_encode($keluhan))->get();
             // dd(DB::getQueryLog());
-            dd($data);
+            // dd($data);
             DB::table('histories')->insert([
                 'user_id' => $request->id_user,
                 'treatment' => $data[0]->hasil,
