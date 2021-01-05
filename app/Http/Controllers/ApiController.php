@@ -98,8 +98,8 @@ class ApiController extends Controller
     {
         
         try{
-            $data=DB::table('rules')->select('hasil')->where('rule1',json_encode($request->keluhan))->get();
-            // return response((json_encode($request->keluhan)));
+            $data=DB::table('rules')->select('hasil')->where('rule1',($request->keluhan))->first();
+            // return response((($request->keluhan)));
             // dd(DB::getQueryLog());
             // dd($data);
             // DB::table('histories')->insert([
@@ -109,7 +109,11 @@ class ApiController extends Controller
             //     'type' => 1,
             //     'hasil' => 1,
             // ]);
-            return response($data);
+            return response()->json([
+                'data'=>$data,
+                'keluhan'=>$request->keluhan,
+                'keluhan_encode'=>json_encode($request->keluhan)
+                ]);
         }catch(Exception $e){
             return response($e);
         }
