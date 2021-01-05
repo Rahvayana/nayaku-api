@@ -96,10 +96,10 @@ class ApiController extends Controller
 
     public function konsultasi(Request $request)
     {
-        // return response(($request->keluhan));
         
         try{
             $data=DB::table('rules')->select('hasil')->where('rule1',$request->keluhan)->get();
+            return response(($request->keluhan));
             // dd(DB::getQueryLog());
             // dd($data);
             DB::table('histories')->insert([
