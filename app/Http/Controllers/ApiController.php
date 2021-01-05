@@ -96,7 +96,7 @@ class ApiController extends Controller
 
     public function konsultasi(Request $request)
     {
-        return response(json_decode($request->keluhan));
+        return response(json_encode($request->keluhan));
         $data=explode(",", substr($request->keluhan,1,strlen(json_encode($request->keluhan))-2));
         $i=0;
         foreach($data as $n){
