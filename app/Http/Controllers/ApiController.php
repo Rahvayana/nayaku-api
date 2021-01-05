@@ -99,20 +99,6 @@ class ApiController extends Controller
         
         try{
             $data=DB::table('rules')->select('hasil')->where('rule1',json_encode($request->keluhan))->get();
-            // return response((($request->keluhan)));
-            // dd(DB::getQueryLog());
-            // dd($data);
-            // foreach($data as $n){
-            //     DB::table('histories')->insert([
-            //         'user_id' => $request->id_user,
-            //         'treatment' => $n,
-            //         'complaint' => json_encode($request->keluhan),
-            //         'type' => 1,
-            //         'hasil' => 1,
-            //         'created_at' => date('Y-m-d H:i:s'),
-            //         'updated_at' => date('Y-m-d H:i:s'),
-            //     ]);
-            // }
             return response()->json([
                 'data'=>$data,
                 'keluhan'=>$request->keluhan,
@@ -128,5 +114,22 @@ class ApiController extends Controller
     {
         $data=DB::table('complaints')->where('kulit',$request->kulit)->get();
         return response($data);
+    }
+
+    public function addhistory(Request $request)
+    {
+        DB::table('histories')->insert([
+                'user_id' => $request->id_user,
+                'treatment' => $request->perawatan,
+                'complaint' => 1,
+                'type' => 1,
+                'hasil' => $request->produk,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Sukses'
+            ]);
     }
 }
