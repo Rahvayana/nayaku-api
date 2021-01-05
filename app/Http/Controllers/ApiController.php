@@ -112,7 +112,8 @@ class ApiController extends Controller
             return response()->json([
                 'data'=>$data,
                 'keluhan'=>$request->keluhan,
-                'keluhan_encode'=>json_encode($request->keluhan)
+                'keluhan_encode'=>json_encode($request->keluhan),
+                'status'=>200
             ],200);
         }catch(Exception $e){
             return response($e,500);
