@@ -98,7 +98,7 @@ class ApiController extends Controller
     {
         
         try{
-            $data=DB::table('rules')->select('hasil')->where('rule1',json_encode($request->keluhan))->first();
+            $data=DB::table('rules')->select('hasil')->where('rule1',json_encode($request->keluhan))->get();
             // return response((($request->keluhan)));
             // dd(DB::getQueryLog());
             // dd($data);
@@ -109,6 +109,7 @@ class ApiController extends Controller
                 'type' => 1,
                 'hasil' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ]);
             return response()->json([
                 'data'=>$data,
