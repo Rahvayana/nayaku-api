@@ -104,7 +104,7 @@ class ApiController extends Controller
             // dd($data);
             DB::table('histories')->insert([
                 'user_id' => $request->id_user,
-                'treatment' => $data[0]->hasil,
+                'treatment' => $data->hasil,
                 'complaint' => $request->keluhan,
                 'type' => 1,
                 'hasil' => 1,
