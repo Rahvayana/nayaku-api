@@ -102,17 +102,17 @@ class ApiController extends Controller
             // return response((($request->keluhan)));
             // dd(DB::getQueryLog());
             // dd($data);
-            foreach($data as $n){
-                DB::table('histories')->insert([
-                    'user_id' => $request->id_user,
-                    'treatment' => $n,
-                    'complaint' => json_encode($request->keluhan),
-                    'type' => 1,
-                    'hasil' => 1,
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s'),
-                ]);
-            }
+            // foreach($data as $n){
+            //     DB::table('histories')->insert([
+            //         'user_id' => $request->id_user,
+            //         'treatment' => $n,
+            //         'complaint' => json_encode($request->keluhan),
+            //         'type' => 1,
+            //         'hasil' => 1,
+            //         'created_at' => date('Y-m-d H:i:s'),
+            //         'updated_at' => date('Y-m-d H:i:s'),
+            //     ]);
+            // }
             return response()->json([
                 'data'=>$data,
                 'keluhan'=>$request->keluhan,
