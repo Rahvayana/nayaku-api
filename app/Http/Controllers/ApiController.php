@@ -98,7 +98,9 @@ class ApiController extends Controller
     {
         
         try{
-            $data=DB::table('rules')->select('hasil')->where('rule1',json_encode($request->keluhan))->get();
+            $data=DB::table('rules')->select('hasil')
+            ->where('kulit',$request->kulit)
+            ->where('rule1',json_encode($request->keluhan))->get();
             return response()->json([
                 'data'=>$data,
                 'keluhan'=>$request->keluhan,
